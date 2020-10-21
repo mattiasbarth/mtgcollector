@@ -1,5 +1,6 @@
 class Card:
     """Represent a (physical) card."""
+    COLLECTION_PATH =
     def __init__(self, name, set_):
         """Set up default card data.
 
@@ -44,3 +45,6 @@ class Card:
             self.is_alt_art = is_alt_art
         if notes is not None:
             self.notes = notes
+
+    def add_to_collection(self):
+

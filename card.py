@@ -24,6 +24,9 @@ class Card:
         self.is_alt_art = False
         self.notes = ''
 
+    def __str__(self):
+        return f'{self.name} ({self.set})'
+
     def add_physical_data(
             self,
             lang=None,
@@ -51,5 +54,15 @@ class Card:
             self.notes = notes
 
     def add_to_collection(self):
-        pass
+        data = f'{self.name};{self.set}'.lower()
+        print(data)
+        with open(type(self).CARDS_PATH, 'a', encoding='utf-8') as f:
+            f.write(data + '\n')
 
+if __name__ == '__main__':
+    card = Card('Cast Out', 'Amonkhet')
+    card2 = Card('Cast Out', 'Commander 2020')
+    print(card)
+    print(card2)
+    card.add_to_collection()
+    card2.add_to_collection()

@@ -1,6 +1,10 @@
+import settings
+
+
 class Card:
     """Represent a (physical) card."""
-    COLLECTION_PATH =
+    CARDS_PATH = settings.CARDS_PATH
+
     def __init__(self, name, set_):
         """Set up default card data.
 
@@ -47,4 +51,5 @@ class Card:
             self.notes = notes
 
     def add_to_collection(self):
+        pass
 

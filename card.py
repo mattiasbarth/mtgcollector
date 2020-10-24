@@ -1,5 +1,12 @@
+import json
+
+import settings
+
+
 class Card:
     """Represent a (physical) card."""
+    CARDS_PATH = settings.CARDS_PATH
+
     def __init__(self, name, set_):
         """Set up default card data.
 
@@ -18,6 +25,9 @@ class Card:
         self.has_stamp = False
         self.is_alt_art = False
         self.notes = ''
+
+    def __str__(self):
+        return f'{self.name} ({self.set})'
 
     def add_physical_data(
             self,
@@ -44,3 +54,24 @@ class Card:
             self.is_alt_art = is_alt_art
         if notes is not None:
             self.notes = notes
+
+    def add_to_collection(self):
+        id_key = f'{self.name};{self.set}'.lower()
+        # Try to open file, create it if doesn't exist.
+        try:
+            with open(self.CARDS_PATH, 'r', encoding='utf-8') as f:
+                pass
+        except FileNotFoundError:
+            with open(self.CARDS_PATH, 'w', encoding='utf-8') as f:
+                json.dump({}, f)
+
+        with open(self.CARDS_PATH, 'r+', encoding='utf-8') as f:
+            pass
+
+if __name__ == '__main__':
+    card = Card('Cast Out', 'Amonkhet')
+    card2 = Card('Cast Out', 'Commander 2020')
+    print(card)
+    print(card2)
+    card.add_to_collection()
+    card2.add_to_collection()

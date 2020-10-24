@@ -1,3 +1,5 @@
+import json
+
 import settings
 
 
@@ -54,10 +56,17 @@ class Card:
             self.notes = notes
 
     def add_to_collection(self):
-        data = f'{self.name};{self.set}'.lower()
-        print(data)
-        with open(type(self).CARDS_PATH, 'a', encoding='utf-8') as f:
-            f.write(data + '\n')
+        id_key = f'{self.name};{self.set}'.lower()
+        # Try to open file, create it if doesn't exist.
+        try:
+            with open(self.CARDS_PATH, 'r', encoding='utf-8') as f:
+                pass
+        except FileNotFoundError:
+            with open(self.CARDS_PATH, 'w', encoding='utf-8') as f:
+                json.dump({}, f)
+
+        with open(self.CARDS_PATH, 'r+', encoding='utf-8') as f:
+            pass
 
 if __name__ == '__main__':
     card = Card('Cast Out', 'Amonkhet')

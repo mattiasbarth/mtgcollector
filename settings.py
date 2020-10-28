@@ -1,6 +1,14 @@
 import pathlib
 
+
+# Project root.
 ROOT_PATH = pathlib.Path(__file__).parent
-# DATA_PATH = ROOT_PATH.joinpath('data')
+
+# Persisting data.
+API_NAME = 'scryfall'
+
+CARDS_DATA_DIR_PATH = ROOT_PATH.joinpath('data')
+CARDS_DATA_FILE = CARDS_DATA_DIR_PATH.joinpath(f'{API_NAME}.json')
+
 COLLECTION_PATH = ROOT_PATH.joinpath('collection')
-CARDS_PATH = COLLECTION_PATH.joinpath('cards.json')
+COLLECTION_FILE = COLLECTION_PATH.joinpath('collected.json')

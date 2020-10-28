@@ -22,7 +22,7 @@ class Card:
         self.colors = data['colors']
 
         # Default user submitted data, unique to each physical card.
-        self.expansion = None
+        self.expansion = '-'
         self.language = 'en'
         self.condition = 'ex'
         self.is_foil = False
@@ -68,27 +68,10 @@ class Card:
         Try to get data from local file, then try the external API to
           avoid unnecessary API requests.
         """
-        card_data = self.get_local_data(self.query_name)
-        if card_data is None:
-            card_data = self.get_api_data(self.query_name)
-        return card_data
-
-    @classmethod
-    def get_api_data(cls, query_name):
-        pass
-
-    @classmethod
-    def get_local_data(cls, query_name):
-        """Return card data stored locally as dictionary."""
-        # Get all data in local file.
-        with open(settings.CARDS_DATA_FILE, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-
-        # Get specified card data or return None.
-        return data.get(query_name, None)
+        return settings.API.get_card_data(self.query_name)
 
     def add_to_collection(self):
-        id_key = f'{self.name};{self.set}'.lower()
+        id_key = f'{self.name};{self.expansion}'.lower()
         # Try to open file, create it if doesn't exist.
         try:
             with open(settings.COLLECTION_FILE, 'r', encoding='utf-8') as f:
@@ -100,10 +83,8 @@ class Card:
         with open(settings.COLLECTION_FILE, 'r+', encoding='utf-8') as f:
             pass
 
+
 if __name__ == '__main__':
-    card = Card('Cast Out')
-    card2 = Card('Cast Out')
+    card = Card('Cast down')
     print(card)
-    print(card2)
-    card.add_to_collection()
-    card2.add_to_collection()
+    # card.add_to_collection()

@@ -12,7 +12,7 @@ class Collection:
         file_name = f'{self.name.lower()}.json'
         try:
             # Try to open file to make sure it does not exist.
-            with open(file_name, 'r', encoding='utf-8') as f:
+            with open(file_name, 'r', encoding='utf-8') as _:
                 pass
         except FileNotFoundError:
             # Create file if it does not exist.

@@ -25,6 +25,30 @@ python3 -m mtgcollector
 2. Browse collection (browse)
 3. Exit (exit)
 Choose an option: 1
+
+Name a card: ightning bol
+Looking for ightning bol in the Multiverse...
+Successfully saved card data for Lightning Bolt to local file.
+Found card Lightning Bolt!
+How many Lightning Bolt do you want to add (1 is default): 2
+Expansion : Revised
+Language (en is default): 
+Condition (ex is default): fn
+Foil (y/n, n is default): 
+Signed (y/n, n is default): 
+Alt art (y/n, n is default): 
+Notes: 
+Card Lightning Bolt (Revised, en) Fn added to collection Collected!
+
+Expansion (Revised is default): Beta
+Language (en is default): 
+Condition (fn is default): nm
+Foil (y/n, n is default): 
+Signed (y/n, n is default): 
+Alt art (y/n, n is default): 
+Notes: 
+Card Lightning Bolt (Beta, en) NM added to collection Collected!
+
 ```
 
 ### Browse Collection
@@ -33,4 +57,10 @@ Choose an option: 1
 2. Browse collection (browse)
 3. Exit (exit)
 Choose an option: 2
+
+Card name: lightning bolt
+Found 2 cards in Collected
+	Lightning Bolt (Revised, en) Fn
+	Lightning Bolt (Beta, en) NM
+
 ```

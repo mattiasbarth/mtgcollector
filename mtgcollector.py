@@ -47,9 +47,9 @@ def add_card():
             # Use previous expansion as default when adding
             #   additional cards.
             default_message = (
-                f'({card_template.expansion.title()} is default)'
+                f' ({card_template.expansion.title()} is default)'
                 if card_template.expansion else '')
-            expansion = input(f'Expansion {default_message}: ').strip()
+            expansion = input(f'Expansion{default_message}: ').strip()
             # Todo: Check expansion validity
             card_template.expansion = expansion or card_template.expansion
             if card_template.expansion:

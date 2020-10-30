@@ -13,4 +13,4 @@ API = api.Scryfall(CARDS_DATA_PATH)
 
 # Collection.
 COLLECTION_PATH = ROOT_PATH.joinpath('collection')
-COLLECTION = collection.Collection(COLLECTION_PATH, name='collected')
+COLLECTION = collection.Collection(COLLECTION_PATH, name='Collected')

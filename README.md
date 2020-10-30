@@ -30,4 +30,9 @@ Choose an option: 1
 ```
 
 ### Browse Collection
-Future feature
+```
+1. Add a card (add)
+2. Browse collection (browse)
+3. Exit (exit)
+Choose an option: 2
+```

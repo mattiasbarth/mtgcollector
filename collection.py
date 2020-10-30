@@ -5,31 +5,44 @@ class Collection:
     """Represent a collection of cards."""
 
     def __init__(self, path, name):
-        self.path = path
-        self.name = name
+        """Create new file to store cards, only if it doesn't exist.
 
-        # Create file to store cards.
+        Each collection has a name that must be unique. Cards can belong
+          to multiple collections, ie Vampires, Angels, Collected.
+        """
+        self.name = name
         file_name = f'{self.name.lower()}.json'
+        path = path.joinpath(file_name)
         try:
             # Try to open file to make sure it does not exist.
-            with open(file_name, 'r', encoding='utf-8') as _:
+            with open(path, 'r', encoding='utf-8') as _:
                 pass
         except FileNotFoundError:
             # Create file if it does not exist.
             # Dump empty dictionary to enable loading json.
-            with open(
-                    self.path.joinpath(f'{self.name.lower()}.json'), 'w',
-                    encoding='utf-8') as f:
+            with open(path, 'w', encoding='utf-8') as f:
                 json.dump({}, f)
         else:
             raise FileExistsError(
                 f'A collection with the name {self.name} already exists,'
-                ' please chose another name.')
+                ' please choose another name.')
+        self.path = path
 
+    def get(self):
+        """Return collection data as dictionary."""
+        with open(self.path, 'r', encoding='utf-8') as f:
+            return json.load(f)
 
-def main():
-    pass
+    def update(self, edited_data):
+        """Update collection with edited data."""
+        # Todo: Backup before writing?
+        with open(self.path, 'w', encoding='utf-8') as f:
+            json.dump(edited_data, f)
 
-
-if __name__ == "__main__":
-    main()
+    def browse(self, card_name, expansion=None):
+        """Browse collection and return result as a tuple with card
+          objects.
+        """
+        # Todo: Implement this
+        # Todo: Enable more search parameters, ie condition
+        pass

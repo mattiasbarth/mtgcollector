@@ -84,7 +84,20 @@ def add_card():
 
 def browse_collection():
     """Browse collection by prompting user for card name."""
-    pass
+    # Todo: Enable multiple search parameters
+    # Todo: Add loop to enable browsing multiple cards
+    # Todo: Enable browsing multiple cards in the same query
+    # Todo: Sort result by name, expansion etc
+    card_name = input('Card name: ')
+    results = [
+        Card(card_data=data)
+        for data in COLLECTION.browse(card_name)]
+    results_count = len(results)
+    print(
+        f"Found {results_count} card{'s' if results_count != 1 else ''}"
+        f' in {COLLECTION.name}')
+    for card in results:
+        print(f'\t{card}')
 
 
 if __name__ == '__main__':

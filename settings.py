@@ -1,6 +1,16 @@
 import pathlib
 
+import api
+import collection
+
+
+# Project root.
 ROOT_PATH = pathlib.Path(__file__).parent
-# DATA_PATH = ROOT_PATH.joinpath('data')
+
+# Storing data.
+CARDS_DATA_PATH = ROOT_PATH.joinpath('data')  # Todo: Use database.
+API = api.Scryfall(CARDS_DATA_PATH)
+
+# Collection.
 COLLECTION_PATH = ROOT_PATH.joinpath('collection')
-CARDS_PATH = COLLECTION_PATH.joinpath('cards.json')
+COLLECTION = collection.Collection(COLLECTION_PATH, name='Collected')

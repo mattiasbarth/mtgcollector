@@ -13,6 +13,7 @@ class Collection:
         self.name = name
         file_name = f'{self.name.lower()}.json'
         path = path.joinpath(file_name)
+        # Todo: Check that path exists or create on setup
         try:
             # Try to open file to make sure it does not exist.
             with open(path, 'r', encoding='utf-8') as _:

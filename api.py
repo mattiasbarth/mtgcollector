@@ -55,7 +55,14 @@ class Scryfall:
     @classmethod
     def _request_card_data(cls, query_name):
         """Request card data from API service."""
-        return requests.get(cls.get_cards_query_string(name=query_name)).json()
+        try:
+            response = requests.get(
+                cls.get_cards_query_string(name=query_name, is_exact=False))
+            # Raise exception if "bad" response code.
+            response.raise_for_status()
+        except requests.exceptions.HTTPError:
+            return None
+        return response.json()
 
     def get_local_card_data(self, query_name=None):
         """Return card data stored locally as dictionary."""

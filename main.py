@@ -1,16 +1,36 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from settings import COLLECTION
+from card import Card, CardTemplate
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def main():
+    print('*** MTGCollector ***\n')
+    while True:
+        print('1. Add a card (add)',
+              '2. Browse collection (browse)',
+              '3. Exit (exit)',
+              sep='\n')
+        option = input('Choose an option: ').lower()
+        print()
+        if option in ('add', '1'):
+            add_card()
+        elif option in ('browse', '2'):
+            # Browse collection.
+            browse_collection()
+            print()
+        else:
+            if input('Do you wish to exit (y/n) ').lower() == 'y':
+                break
 
 
-# Press the green button in the gutter to run the script.
+def add_card():
+    """Add one or more cards to collection."""
+    pass
+
+
+def browse_collection():
+    """Browse collection by prompting user for card name."""
+    pass
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()

@@ -18,7 +18,7 @@ def main():
             browse_collection()
             print()
         else:
-            if input('Do you wish to exit (y/n) ').lower() == 'y':
+            if input('Do you wish to exit? (y/n) ').lower() == 'y':
                 break
 
 

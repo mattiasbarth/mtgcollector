@@ -48,8 +48,12 @@ class Scryfall:
             # Request card data from API service.
             card_data = self._request_card_data(query_name=query_name)
             if card_data is not None:
-                # Save card data locally first time it is requested.
-                self._save_card_data(query_name=query_name, card_data=card_data)
+                # Check that exact name does not exist locally.
+                local_card_data = self.get_local_card_data(
+                    query_name=card_data['name'].lower())
+                if not local_card_data:
+                    # Save card data locally first time it is requested.
+                    self._save_card_data(card_data=card_data)
         return card_data
 
     @classmethod
@@ -76,13 +80,14 @@ class Scryfall:
         # Get specified card data or return None.
         return data.get(query_name.lower(), None)
 
-    def _save_card_data(self, query_name, card_data):
+    def _save_card_data(self, card_data):
         """Save requested card data locally.
 
-        Assume query name is not a key in local data.
+        Assume card data has key "name".
         """
+        card_name = card_data['name']
         data = self.get_local_card_data()
-        data.update({query_name.lower(): card_data})
+        data.update({card_name.lower(): card_data})
         with open(self.local_data_file, 'w', encoding='utf-8') as f:
             json.dump(data, f)
-        print(f'Successfully saved card data for {query_name} to local file.')
+        print(f'Successfully saved card data for {card_name} to local file.')

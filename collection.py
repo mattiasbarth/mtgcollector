@@ -22,10 +22,6 @@ class Collection:
             # Dump empty dictionary to enable loading json.
             with open(path, 'w', encoding='utf-8') as f:
                 json.dump({}, f)
-        else:
-            raise FileExistsError(
-                f'A collection with the name {self.name} already exists,'
-                ' please choose another name.')
         self.path = path
 
     def get(self):
@@ -45,4 +41,4 @@ class Collection:
         """
         # Todo: Implement this
         # Todo: Enable more search parameters, ie condition
-        pass
+        return self.get().get(card_name.lower(), [])

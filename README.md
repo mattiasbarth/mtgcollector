@@ -13,6 +13,7 @@ Create a new virtual environment then install the requirements.
 ```
 python3 -m pip install -r requirements.txt
 ```
+Set paths to store local API data and collection in `settings.py`. This must be done before running the program and it will crash if either of these paths (as in directories, files will be generated) does not exist.
 
 ## Usage
 ```

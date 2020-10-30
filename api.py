@@ -12,8 +12,17 @@ class Scryfall:
     REQUEST_DELAY = 10  # seconds
 
     def __init__(self, data_path):
-        # Todo: Create file if it does not exist.
         self.local_data_file = data_path.joinpath(f'{self.NAME.lower()}.json')
+        # Create file to store card data.
+        try:
+            # Try to open file to check if it does exist.
+            with open(self.local_data_file, 'r', encoding='utf-8') as _:
+                pass
+        except FileNotFoundError:
+            # Create file if it does not exist.
+            # Dump empty dictionary to enable loading json.
+            with open(self.local_data_file, 'w', encoding='utf-8') as f:
+                json.dump({}, f)
 
     def __str__(self):
         """Return API string representation."""

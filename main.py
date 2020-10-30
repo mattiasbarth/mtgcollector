@@ -27,7 +27,7 @@ def add_card():
     while True:
         # Prompt user for a card name as long at card name is invalid.
         # Query name can be inexact and is case insensitive but may only
-        #   be interpreted  as exactly one card, it can't be ambiguous.
+        #   be interpreted as exactly one card, it can't be ambiguous.
         query_name = input('Name a card: ')
         print(f'Looking for {query_name} in the Multiverse...')
         try:
@@ -39,27 +39,34 @@ def add_card():
         # Query name is valid and a card has been found.
     print(f'Found card {card_template.name}!')
     count = input(
-        f'How many {card_template.name} do you want to add (1 is default) ')
+        f'How many {card_template.name} do you want to add (1 is default): ')
     count = count.strip() or 1  # Todo: Check if numeric
     for _ in range(int(count)):
         # Prompt user for card expansion, it can't be empty.
         while True:
             # Use previous expansion as default when adding
             #   additional cards.
-            default_message = (f'({card_template.expansion.title()} is default)'
-                               if card_template.expansion else '')
-            expansion = input(f'Expansion{default_message}: ').strip()
-            # Todo: Check expansion validity.
+            default_message = (
+                f'({card_template.expansion.title()} is default)'
+                if card_template.expansion else '')
+            expansion = input(f'Expansion {default_message}: ').strip()
+            # Todo: Check expansion validity
             card_template.expansion = expansion or card_template.expansion
             if card_template.expansion:
+                # Expansion is valid.
                 break
-        # User has entered "valid" expansion.
         # Ask user for specific card data.
-        language = input('Language (en is default): ')
-        condition = input('Condition (ex is default): ')
-        is_foil = input('Foil (y/n, n is default): ')
-        is_signed = input('Signed (y/n, n is default): ')
-        is_alt_art = input('Alt art (y/n, n is default): ')
+        # Todo: Move handling specific card data to Card class from
+        #   CardTemplate?
+        language = input(f'Language ({card_template.language} is default): ')
+        condition = input(f'Condition ({card_template.condition} is default): ')
+        # Todo: Add option to fill in extras or not
+        is_foil = input(
+            f"Foil (y/n, {'y' if card_template.is_foil else 'n'} is default): ")
+        is_signed = input(
+            f"Signed (y/n, {'y' if card_template.is_signed else 'n'} is default): ")
+        is_alt_art = input(
+            f"Alt art (y/n, {'y' if card_template.is_alt_art else 'n'} is default): ")
         notes = input('Notes: ')
         card_template.set_specific_data(
             language,

@@ -37,8 +37,8 @@ class CardTemplate:
 
     def set_specific_data(
             self,
-            language=None,
-            condition=None,
+            language,
+            condition,
             is_foil=None,
             is_signed=None,
             has_stamp=None,
@@ -96,7 +96,7 @@ class Card:
 
     def __str__(self):
         return (f'{self.name} ({self.expansion.title()}, {self.language})'
-                f" {self.condition} {' FOIL' if self.is_foil else ''}")
+                f" {self.condition}{' FOIL' if self.is_foil else ''}")
 
     def add_to_collection(self, collection):
         """Add card to specified collection.

@@ -31,7 +31,7 @@ Looking for ightning bol in the Multiverse...
 Successfully saved card data for Lightning Bolt to local file.
 Found card Lightning Bolt!
 How many Lightning Bolt do you want to add (1 is default): 2
-Expansion : Revised
+Expansion: Revised
 Language (en is default): 
 Condition (ex is default): fn
 Foil (y/n, n is default): 

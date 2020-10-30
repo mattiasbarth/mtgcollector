@@ -6,7 +6,10 @@ As a collector of MTG cards I want to have to organise my collection. While I us
 #### Initial features
 * User can add card to collection
 * Card data is fetched with an API and stored locally
-* User can browse collection based on card name (and optionally set)
+* ~~User can browse collection based on card name (and optionally expansion)~~
+
+## Development Process
+
 
 ## Installation
 Create a new virtual environment then install the requirements.
@@ -15,13 +18,16 @@ python3 -m pip install -r requirements.txt
 ```
 
 ## Usage
+```
+python3 -m mtgcollector
+```
 ### Add Card
 ```
-python3 -m mtgcollector add  <card name> --exp <set name>
+1. Add a card (add)
+2. Browse collection (browse)
+3. Exit (exit)
+Choose an option: 1
 ```
 
 ### Browse Collection
-```
-python3 -m mtgcollector browse  <card name> --exp <set name>
-```
-
+Future feature
